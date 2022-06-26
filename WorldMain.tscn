@@ -1,0 +1,677 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://TileSets.tres" type="TileSet" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Player.png" type="Texture" id=3]
+[ext_resource path="res://Coin.gd" type="Script" id=4]
+[ext_resource path="res://Coin.png" type="Texture" id=5]
+[ext_resource path="res://Random 8bit Theme 1.wav" type="AudioStream" id=6]
+[ext_resource path="res://Clouds V2-2.png" type="Texture" id=7]
+[ext_resource path="res://Flying Platform.gd" type="Script" id=8]
+[ext_resource path="res://GrassHillRight.png" type="Texture" id=9]
+
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 8.0
+height = 8.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Jumping"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 18, 19 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Running"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 8, 9 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Sword Attack"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 12, 13, 14, 15, 0 ]
+}
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 8.0
+
+[sub_resource type="Animation" id=9]
+resource_name = "Moving Platform"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3456, 216 ), Vector2( 3672, 216 ), Vector2( 3456, 216 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3456, 216 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 32, 1.125 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "Moving Platform"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 3984, 217 ), Vector2( 4328, 360 ), Vector2( 3984, 217 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3456, 216 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Moving Platform"
+length = 12.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6, 12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -352, 912 ), Vector2( -1168, 1432 ), Vector2( -352, 912 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3456, 216 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 46, 27.5 )
+
+[node name="WorldMain" type="Node2D"]
+__meta__ = {
+"_edit_vertical_guides_": [ -288.0 ]
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.15, 0.15 )
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( -655173, 0, 0, -655169, 0, 0, -589665, 1, 0, -589659, 1, 0, -589651, 0, 0, -589647, 0, 0, -393175, 1, 0, -393171, 1, 0, -393167, 1, 0, -393062, 1, 0, -393029, 1, 0, -393025, 1, 0, -327507, 1, 0, -327503, 1, 0, -262116, 1, 0, -262112, 1, 0, -261944, 1, 0, -196459, 1, 0, -131056, 0, 0, -131052, 0, 0, 65516, 0, 0, 65520, 0, 0, 65524, 0, 0, 65528, 0, 0, 65532, 0, 0, 0, 0, 0, 4, 0, 0, 8, 0, 0, 12, 0, 0, 144, 1, 0, 131088, 1, 0, 131092, 1, 0, 196747, 1, 0, 327660, 1, 0, 327664, 1, 0, 327668, 1, 0, 327672, 1, 0, 327676, 1, 0, 262144, 1, 0, 262148, 1, 0, 262152, 1, 0, 262156, 1, 0, 262160, 1, 0, 262164, 1, 0, 327814, 1, 0, 327887, 1, 0, 327895, 1, 0, 327903, 0, 0, 327907, 0, 0, 327961, 1, 0, 327969, 1, 0, 393338, 0, 0, 393342, 0, 0, 393469, 0, 0, 393473, 0, 0, 393481, 1, 0, 393489, 1, 0, 458852, 1, 0, 458859, 0, 0, 458863, 0, 0, 458989, 0, 0, 458993, 0, 0, 458997, 0, 0, 459001, 0, 0, 524374, 1, 0, 524381, 1, 0, 589883, 0, 0, 589887, 0, 0, 589891, 0, 0, 589895, 0, 0, 589903, 1, 0, 590047, 1, 0, 590051, 1, 0, 655482, 1, 0, 655486, 1, 0, 655613, 1, 0, 655617, 1, 0, 721003, 1, 0, 721007, 1, 0, 721133, 1, 0, 721137, 1, 0, 721141, 1, 0, 721145, 1, 0, 852027, 1, 0, 852031, 1, 0, 852035, 1, 0, 852039, 1, 0, 1507644, 1, 0, 1507651, 1, 0, 1507658, 1, 0, 1507670, 0, 0, 1507674, 0, 0, 1507678, 0, 0, 1507717, 0, 0, 1507721, 0, 0, 1507725, 0, 0, 1507729, 0, 0, 1507733, 0, 0, 1573160, 1, 0, 1573164, 1, 0, 1573168, 1, 0, 1573172, 1, 0, 1769814, 1, 0, 1769818, 1, 0, 1769822, 1, 0, 1769861, 1, 0, 1769865, 1, 0, 1769869, 1, 0, 1769873, 1, 0, 1769877, 1, 0, 2294241, 0, 0, 2359773, 0, 0, 2425305, 0, 0, 2490825, 0, 0, 2490829, 0, 0, 2490833, 0, 0, 2490837, 0, 0, 2556385, 1, 0, 2621917, 1, 0, 2687449, 1, 0, 2752969, 1, 0, 2752973, 1, 0, 2752977, 1, 0, 2752981, 1, 0, 6291424, 0, 0, 6291428, 0, 0, 6291432, 0, 0, 6553568, 1, 0, 6553572, 1, 0, 6553576, 1, 0, 9830262, 0, 0, 9830266, 0, 0, 9830270, 0, 0, 10092406, 1, 0, 10092410, 1, 0, 10092414, 1, 0 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+position = Vector2( 0, -13 )
+scale = Vector2( 1, 1.25 )
+texture = ExtResource( 3 )
+hframes = 6
+vframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, -12 )
+shape = SubResource( 17 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+anims/Idle = SubResource( 2 )
+anims/Jumping = SubResource( 5 )
+anims/RESET = SubResource( 3 )
+anims/Running = SubResource( 4 )
+"anims/Sword Attack" = SubResource( 6 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource( 6 )
+volume_db = 4.0
+autoplay = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Player"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Player/ParallaxBackground"]
+motion_mirroring = Vector2( 490, 360 )
+
+[node name="Sprite" type="Sprite" parent="Player/ParallaxBackground/ParallaxLayer"]
+position = Vector2( -144, -88 )
+scale = Vector2( 3.875, 2.8125 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="Collectable" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable"]
+position = Vector2( 64, -12 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable2" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable2"]
+position = Vector2( 120, -12 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable2/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable3" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable3"]
+position = Vector2( 176, -32 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable3/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable3/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable4" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable4"]
+position = Vector2( 448, -72 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable4/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable4/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable5" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable5"]
+position = Vector2( 624, 72 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable5/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable5/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable6" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable6"]
+position = Vector2( 664, 72 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable6/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable6/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable7" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable7"]
+position = Vector2( 1064, 56 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable7/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable7/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable8" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable8"]
+position = Vector2( 1680, -104 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable8/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable8/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable9" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable9"]
+position = Vector2( 1720, -104 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable9/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable9/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable10" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable10"]
+position = Vector2( 1680, -136 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable10/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable10/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable11" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable11"]
+position = Vector2( 1720, -136 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable11/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable11/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable12" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable12"]
+position = Vector2( 2560, 40 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable12/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable12/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable13" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable13"]
+position = Vector2( 2896, 216 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable13/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable13/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable14" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable14"]
+position = Vector2( 2936, 216 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable14/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable14/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable15" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable15"]
+position = Vector2( 3344, 208 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable15/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable15/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable16" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable16"]
+position = Vector2( 4752, 320 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable16/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable16/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Collectable17" type="Node" parent="."]
+
+[node name="Coin" type="Area2D" parent="Collectable17"]
+position = Vector2( 4752, 296 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable17/Coin"]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="Collectable17/Coin"]
+texture = ExtResource( 5 )
+hframes = 6
+
+[node name="Flying Platform" type="KinematicBody2D" parent="."]
+position = Vector2( 3456, 216 )
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="Flying Platform"]
+rotation = -0.785398
+scale = Vector2( 0.09, 0.09 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flying Platform"]
+"anims/Moving Platform" = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flying Platform"]
+position = Vector2( 0, 1 )
+shape = SubResource( 11 )
+
+[node name="Flying Platform2" type="KinematicBody2D" parent="."]
+position = Vector2( 3456, 216 )
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="Flying Platform2"]
+rotation = -0.785398
+scale = Vector2( 0.09, 0.09 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flying Platform2"]
+"anims/Moving Platform" = SubResource( 12 )
+anims/RESET = SubResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flying Platform2"]
+position = Vector2( 0, 1 )
+shape = SubResource( 11 )
+
+[node name="Flying Platform3" type="KinematicBody2D" parent="."]
+position = Vector2( 3456, 216 )
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="Flying Platform3"]
+rotation = -0.785398
+scale = Vector2( 0.09, 0.09 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flying Platform3"]
+"anims/Moving Platform" = SubResource( 15 )
+anims/RESET = SubResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flying Platform3"]
+position = Vector2( 0, 1.12512 )
+shape = SubResource( 11 )
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 4672.0
+margin_top = 336.0
+margin_right = 4760.0
+margin_bottom = 376.0
+text = "YOU WIN !!!
+:)"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TextEdit"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextEdit/StaticBody2D"]
+position = Vector2( 44, 20 )
+shape = SubResource( 14 )
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+margin_left = -1416.0
+margin_top = 1456.0
+margin_right = -1328.0
+margin_bottom = 1504.0
+text = "So you found 
+The Secret?"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TextEdit2"]
+position = Vector2( 0, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextEdit2/StaticBody2D"]
+position = Vector2( 42, 19.5 )
+shape = SubResource( 14 )
+
+[connection signal="body_entered" from="Collectable/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable/Coin" to="Collectable/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable2/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable2/Coin" to="Collectable2/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable3/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable3/Coin" to="Collectable3/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable4/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable4/Coin" to="Collectable4/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable5/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable5/Coin" to="Collectable5/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable6/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable6/Coin" to="Collectable6/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable7/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable7/Coin" to="Collectable7/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable8/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable8/Coin" to="Collectable8/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable9/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable9/Coin" to="Collectable9/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable10/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable10/Coin" to="Collectable10/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable11/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable11/Coin" to="Collectable11/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable12/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable12/Coin" to="Collectable12/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable13/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable13/Coin" to="Collectable13/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable14/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable14/Coin" to="Collectable14/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable15/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable15/Coin" to="Collectable15/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable16/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable16/Coin" to="Collectable16/Coin" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable17/Coin" to="Player" method="_on_Coin_body_entered"]
+[connection signal="body_entered" from="Collectable17/Coin" to="Collectable17/Coin" method="_on_Coin_body_entered"]

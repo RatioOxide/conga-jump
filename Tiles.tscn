@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Grass.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 128, 127.716 )
+
+[node name="Tiles" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -16, 16 )
+scale = Vector2( 0.125, 0.121094 )
+texture = ExtResource( 1 )
+hframes = 2
+vframes = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+position = Vector2( 7.62939e-06, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
+position = Vector2( -7.62939e-06, 4.41301 )
+shape = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( -168, -16 )
+scale = Vector2( 0.125, 0.126953 )
+texture = ExtResource( 1 )
+offset = Vector2( 1216, 506.092 )
+hframes = 2
+vframes = 2
+frame = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2"]
+position = Vector2( 7.62939e-06, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2/StaticBody2D"]
+position = Vector2( -7.62939e-06, 4.41301 )
+shape = SubResource( 1 )
